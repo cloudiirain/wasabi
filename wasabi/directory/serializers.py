@@ -3,7 +3,7 @@ from models import Series, Chapter
 from django.contrib.auth.models import User
 
 class SeriesSerializer(serializers.ModelSerializer):
-    pages = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    chapters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     
     class Meta:
         model = Series
