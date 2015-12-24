@@ -27,6 +27,8 @@ class UserDetail(generics.RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+# I need an authentication method - login is probably sufficient
+
 class ChapterList(APIView):
     """
     List all chapters, or create a new chapter.
