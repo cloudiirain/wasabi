@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from directory.models import Series, Page
+from models import Series, Chapter
 from django.contrib.auth.models import User
 
 class SeriesSerializer(serializers.ModelSerializer):
@@ -7,16 +7,16 @@ class SeriesSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Series
-        fields = ('id', 'title', 'pages')
+        fields = ('id', 'title', 'chapters')
         
-class PageSerializer(serializers.ModelSerializer):
+class ChapterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Page
+        model = Chapter
         fields = ('id', 'series', 'owner', 'title', 'order', 'body',)
         
 class UserSerializer(serializers.ModelSerializer):
-    pages = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    chapters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'pages')
+        fields = ('id', 'username', 'chapters')

@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
-from models import Series, Page
+from models import Series, Chapter
 from django.contrib.auth.models import User
-from serializers import SeriesSerializer, PageSerializer, UserSerializer
+from serializers import SeriesSerializer, ChapterSerializer, UserSerializer
 
 class SeriesList(generics.ListCreateAPIView):
     queryset = Series.objects.all()
@@ -13,21 +13,20 @@ class SeriesDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SeriesSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     
-class PageList(generics.ListCreateAPIView):
-    queryset = Page.objects.all()
-    serializer_class = PageSerializer
+class ChapterList(generics.ListCreateAPIView):
+    queryset = Chapter.objects.all()
+    serializer_class = ChapterSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-class PageDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Page.objects.all()
-    serializer_class = PageSerializer
+class ChapterDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Chapter.objects.all()
+    serializer_class = ChapterSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
 
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
