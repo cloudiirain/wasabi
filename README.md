@@ -1,6 +1,9 @@
 Project Wasabi
 ==============
 
+[![Build Status](https://travis-ci.org/cloudiirain/wasabi.svg?branch=master)](https://travis-ci.org/cloudiirain/wasabi)
+[![Coverage Status](https://coveralls.io/repos/cloudiirain/wasabi/badge.svg)](https://coveralls.io/r/cloudiirain/wasabi)
+
 "A light novel translation host that isn't wordpress."
 
 Synopsis
