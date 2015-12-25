@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.authtoken import views as authviews
 from . import views
 
 urlpatterns = [
@@ -7,6 +8,7 @@ urlpatterns = [
     url(r'^series/(?P<pk>[0-9]+)/$', views.SeriesDetail.as_view()),
     url(r'^chapter/$', views.ChapterList.as_view()),
     url(r'^chapter/(?P<pk>[0-9]+)/$', views.ChapterDetail.as_view()),
+    url(r'^api-token-auth/', authviews.obtain_auth_token),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
 

@@ -17,3 +17,19 @@ class RegistrationTest(TestCase):
         """
         pass
 
+    """
+    if new_form.is_valid:
+    payload= {"createNewUser":
+              { "users": request.POST["newusers"],
+                "email": request.POST["newemail"]
+                }
+              }
+
+    headers =  {'content-type' : 'application/json',
+                'Authorization': 'Token 6b929e47f278068fe6ac8235cda09707a3aa7ba1'}
+
+    r = requests.post('http://localhost:8000/api/v1.0/user_list',
+                      data=json.dumps(payload),
+                      headers=headers, verify=False)
+    """
+
