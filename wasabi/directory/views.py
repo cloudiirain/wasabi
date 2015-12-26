@@ -13,16 +13,6 @@ class SeriesDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SeriesSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-
 class ChapterList(generics.ListCreateAPIView):
     queryset = Chapter.objects.all()
     serializer_class = ChapterSerializer
