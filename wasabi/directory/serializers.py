@@ -16,6 +16,7 @@ class ChapterSerializer(serializers.ModelSerializer):
         
 class UserSerializer(serializers.ModelSerializer):
     chapters = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
