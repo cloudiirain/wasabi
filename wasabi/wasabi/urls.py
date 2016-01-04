@@ -8,7 +8,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.home, name='index'),
     url('^u/register/', CreateView.as_view(
-            template_name = 'register.html',
+            template_name = 'registration/register.html',
             form_class = UserCreationForm,
             success_url = '/'
     ), name='register'),

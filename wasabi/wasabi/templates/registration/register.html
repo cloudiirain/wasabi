@@ -18,11 +18,15 @@
                           <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
                               <input class="form-control"
                                 {% if field.name == "password1" or field.name == "password2" %}type="password"
-                                {% else %}type="text"{% endif %}
+                                {% else %}type="text" placeholder="{{ field.value }}" {% endif %}
                                 name="{{ field.name }}"
-                                id="id_{{ field.name }}"
-                                placeholder="{{ field.value }}" >
+                                id="id_{{ field.name }}">
                                 <!--<p class="help-text">{{ field.help_text }} </p>-->
+                                {% if field.errors %}
+                                {% for error in field.errors %}
+                                  <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                                {% endif %}
                         </fieldset>
                         {% endfor %}
                            <input type="submit" value="Submit"  class="btn btn-primary">

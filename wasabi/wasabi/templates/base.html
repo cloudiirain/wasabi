@@ -57,9 +57,12 @@
                     <li>
                         <a href="#">Android App</a>
                     </li>
-                    <li>
-                        <a href="#">Register/Account</a>
-                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">{% if request.user.is_authenticated %}
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> My Account</a></li>
+                    <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>{% else %}
+                    <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-out"></span> Login</a></li>{% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
