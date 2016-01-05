@@ -1,5 +1,6 @@
 Django==1.8
 Markdown==2.6.5
+django-ckeditor==5.0.2
 django-filter==0.11.0
 djangorestframework==3.3.2
 wsgiref==0.1.2

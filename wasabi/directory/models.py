@@ -3,6 +3,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from ckeditor.fields import RichTextField
 
 """
 A novel series
@@ -25,7 +26,7 @@ class Chapter(models.Model):
     series = models.ForeignKey(Series, related_name='chapters')
     owner = models.ForeignKey('auth.User', related_name='chapters', default=None)
     order = models.IntegerField()
-    body = models.TextField()
+    body = RichTextField()
 
     def __unicode__(self):
         return str(self.series) + ": " + str(self.title)

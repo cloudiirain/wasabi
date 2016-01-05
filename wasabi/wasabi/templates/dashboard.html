@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% include 'sidebar.html' %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Welcome, {{ request.user }}</h1>
+        <h2>My Translations</h2>
+        {% if series %}
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        {% for key, values in series.items %}
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="heading-{{ key.id }}">
+                    <h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ key.id }}" aria-expanded="false" aria-controls="collapse-{{ key.id }}">
+                        {{ key }}
+                    </a></h4>
+                </div>
+                <div id="collapse-{{ key.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{ key.id }}">
+                    <ul class="list-group">
+                    {% for chapter in values %}
+                        <li class=list-group-item><a href="{% url 'chapter-update' chapter.id %}">{{ chapter.order }}. {{ chapter.title }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% else %}
+        <p>There are no series</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

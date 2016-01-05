@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block styles %}<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">{% endblock %}
+
+{% block content %}
+<div class="row">
+    {% include 'sidebar.html' %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header">Create This</h1>
+        {% if object %}
+        <form class="form-contact" action="{% url 'chapter-update' %}" method="POST">
+        {% else %}
+        <form class="form-contact" action="{% url 'chapter-create' %}" method="POST">
+        {% endif %}
+            {% csrf_token %}{{ form.media }}
+            {{form}}
+            <input type="submit" value="Submit"  class="btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}
